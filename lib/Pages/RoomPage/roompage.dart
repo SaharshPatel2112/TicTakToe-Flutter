@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tictaktoe_multiplayer/Components/primary_button.dart';
+import 'package:tictaktoe_multiplayer/Configs/assetspath.dart';
+import 'package:tictaktoe_multiplayer/Pages/LobbyPage/lobby_page.dart';
+
+class RoomPage extends StatelessWidget {
+  const RoomPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  SvgPicture.asset(IconsPath.backIcon),
+                  SizedBox(width: 15),
+                  Text(
+                    "Play with Private Room",
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
+              ),
+              SizedBox(height: 40),
+              Text(
+                'Enter Private Code And Join With Your Friend',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  fillColor: Theme.of(context).colorScheme.primaryContainer,
+                  filled: true,
+                  hintText: "Enter Code Here",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              PrimaryButton(
+                  buttonText: "Join Now",
+                  onTap: () {}
+              ),
+              SizedBox(height: 100),
+              Text(
+                'Create Private Room',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              Spacer(),
+              PrimaryButton(
+                  buttonText: "Create Room",
+                  onTap: () {
+                    Get.to(LobbyPage());
+                  }
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
